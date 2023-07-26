@@ -1,0 +1,409 @@
+#kivy: 3.11.1
+<WindowManager>
+  WelcomeWin:
+  LoginWin:
+  SignUpWin:
+  MainWin:
+  JournalWin:
+  DataWin:
+
+<WelcomeWin>
+    
+  name: 'welcome'    
+    
+  FloatLayout:
+
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+                
+    login_btn: login_btn
+    sign_up_btn: sign_up_btn
+
+    GridLayout:
+      cols: 1
+      size_hint: 1, 0.5
+      pos_hint: {'x': 0, 'y': 0.5 }
+
+      Label:
+        text: 'Mental Health Tracker!'
+        font_size: 60
+        bold: True
+        italic: True
+            
+    Button:
+      background_normal: " "
+      id: login_btn
+      background_color: 217/255, 220/255, 214/255, 0.6
+      pos_hint: {'x': 0.3, 'y': 0.4, }
+      text: 'Login'
+      bold: True
+      size_hint: 0.4, 0.1
+      on_release: 
+        app.root.current = 'login'
+                
+    Button:
+      id: sign_up_btn
+      background_normal: " "
+      background_color: 217/255, 220/255, 214/255, 0.6
+      pos_hint: {'x': 0.3, 'y': 0.2}
+      text: 'Sign Up'
+      size_hint: 0.4, 0.1
+      bold: True
+      on_release: 
+        app.root.current = 'signup'
+
+<LoginWin>
+    
+  username_input_log: username
+  password_input_log: password
+
+  name: 'login'
+
+  FloatLayout:
+        
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+
+    FloatLayout:
+      size_hint: 0.6, 0.2
+      pos_hint: {'x': 0.2, 'y': 0.4}
+
+      canvas.before:
+        Color:
+          rgba: 0.086, 0.258, 0.357, 1
+        Rectangle:
+          pos: self.pos
+          size: self.size
+            
+      GridLayout:
+        size_hint: 1, 1
+        pos_hint: {'x': 0, 'y': 0}
+        cols: 2
+
+        Label:
+          text: 'Username'
+                        
+        TextInput:
+          id: username
+          multiline: False
+                    
+        Label:
+          text: 'Password'
+                    
+        TextInput:
+          id: password
+          multiline: False
+            
+    GridLayout:
+      cols: 1
+      size_hint: 0.4, 0.1
+      pos_hint: {'x': 0.3, 'y': 0.2}
+
+      Button:
+        background_normal: " "
+        background_color: 0.086, 0.258, 0.357, 1
+        text: 'Login'
+        bold: True
+        on_release:
+          root.login()
+          
+                     
+    FloatLayout:
+
+      Button:
+        background_normal: " "
+        background_color: 0.086, 0.258, 0.357, 1
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': 0, 'y': 0.9 }
+        text: 'Go Back'
+        on_release: 
+          app.root.current = 'welcome'
+                    
+<SignUpWin>
+
+  username_input: username
+  password_input: password
+
+  name: 'signup'
+
+  FloatLayout:
+        
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+
+
+    FloatLayout:
+      size_hint: 0.6, 0.2
+      pos_hint: {'x': 0.2, 'y': 0.4}
+      cols: 2
+
+      canvas.before:
+        Color:
+          rgba: 0.086, 0.258, 0.357, 1
+        Rectangle:
+          pos: self.pos
+          size: self.size
+            
+      GridLayout:
+        size_hint: 1, 1
+        pos_hint: {'x': 0, 'y': 0}
+        cols: 2
+
+        Label:
+          text: 'Create a Username'
+                        
+        TextInput:
+          id: username
+          multiline: False
+                    
+        Label:
+          text: 'Create a Password'
+                    
+        TextInput:
+          id: password
+          multiline: False
+            
+    GridLayout:
+      cols: 1
+      size_hint: 0.4, 0.1
+      pos_hint: {'x': 0.3, 'y': 0.2}
+
+      Button:
+        background_normal: " "
+        background_color: 0.086, 0.258, 0.357, 1
+        text: 'Sign Up'
+        bold: True
+        on_release: 
+          root.add_user()
+        
+    FloatLayout:
+
+      Button:
+        background_normal: " "
+        background_color: 0.086, 0.258, 0.357, 1
+        size_hint: 0.1, 0.1
+        pos_hint: {'x': 0, 'y': 0.9 }
+        text: 'Go Back'
+        on_release: 
+          app.root.current = 'welcome'
+
+<MainWin>
+
+  name: 'mainwin'
+    
+  FloatLayout:
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+    
+    Button:
+      background_normal: ' '
+      size_hint: 0.1, 0.1
+      pos_hint: {'x': 0, 'y': 0.9 }
+      text: 'Go Back'
+      background_color: 217/255, 220/255, 214/255, 0.6
+      on_release: 
+        app.root.current = 'signup'         
+        
+    Button:
+      background_normal: ' '
+      size_hint: 0.4, 0.15
+      text: 'My Journal'
+      pos_hint: {'x': 0.3, 'y': 0.55}
+      background_color: 217/255, 220/255, 214/255, 0.6
+      bold: True
+      on_release: 
+        app.root.current = 'journal'
+        
+    Button:
+      background_normal: ' '
+      size_hint: 0.4, 0.15
+      text: 'My Archives'
+      pos_hint: {'x': 0.3, 'y': 0.3}
+      background_color: 217/255, 220/255, 214/255, 0.6
+      bold: True
+      on_release: 
+        app.root.current = 'data'
+
+<JournalWin>
+  name: 'journal'
+
+  journal_input: journal_id
+  btn1_input: btn1
+  btn2_input: btn2
+  btn3_input: btn3
+  btn4_input: btn4
+  btn5_input: btn5
+    
+  FloatLayout:
+    size_hint: 0.2, 1
+
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+
+    GridLayout:
+      cols: 1
+      size_hint: 1, 0.1
+      pos_hint: {'x': 0, 'y': 0.85} 
+
+      Label:
+        id: journal_date
+        bold: True
+        text: root.get_date()
+      
+    Button:
+      background_normal: ' '
+      background_color: 0.086, 0.258, 0.357, 1
+      id: btn1
+      size_hint: 0.5, 0.05
+      pos_hint: {'x': 0.25, 'y': 0.25}
+      text: '1'
+      on_release:
+        root.btn1()
+    
+    Button:
+      background_normal: ' '
+      background_color: 0.086, 0.258, 0.357, 1
+      id: btn2
+      size_hint: 0.5, 0.05
+      pos_hint: {'x': 0.25, 'y': 0.35}
+      text: '2'
+      on_release:
+        root.btn2()
+
+    Button:
+      background_normal: ' '
+      background_color: 0.086, 0.258, 0.357, 1
+      id: btn3
+      size_hint: 0.5, 0.05
+      pos_hint: {'x': 0.25, 'y': 0.45}
+      text: '3'
+      on_release:
+        root.btn3()
+
+    Button:
+      background_normal: ' '
+      background_color: 0.086, 0.258, 0.357, 1
+      id: btn4
+      size_hint: 0.5, 0.05
+      pos_hint: {'x': 0.25, 'y': 0.55}
+      text: '4'
+      on_release:
+        root.btn4()
+
+    Button:
+      background_normal: ' '
+      background_color: 0.086, 0.258, 0.357, 1
+      id: btn5
+      size_hint: 0.5, 0.05
+      pos_hint: {'x': 0.25, 'y': 0.65}
+      text: '5'
+      on_release:
+        root.btn5()
+
+  GridLayout:
+    cols: 1
+    size_hint: 0.8, 1
+    pos_hint: {'x': 0.2}
+    TextInput:
+      id: journal_id
+
+  Button:
+    background_normal: ' '
+    size_hint: 1, 0.1
+    background_color: 0.086, 0.258, 0.357, 1
+    text: 'Save'
+    on_release:
+      root.add_entry()
+
+  Button:
+    background_normal: " "
+    background_color: 0.086, 0.258, 0.357, 1
+    size_hint: 0.1, 0.1
+    pos_hint: {'x': 0, 'y': 0.9 }
+    text: 'Go Back'
+    on_release: 
+      app.root.current = 'mainwin'
+
+<DataWin>
+
+  name: 'data'
+  date_input: date
+  FloatLayout:
+        
+    canvas.before:
+      Color:
+        rgba: 0.18, 0.4, 0.56, 1
+      Rectangle:
+        pos: self.pos
+        size: self.size
+
+    GridLayout:
+      cols: 1
+
+      size_hint: 1, 0.4
+
+      pos_hint: {'y': 0.6}
+        
+      Label:
+        text: 'Make sure date is in format YYYY-MM-DD'
+
+    FloatLayout:
+      size_hint: 0.6, 0.1
+      pos_hint: {'x': 0.2, 'y': 0.5}
+
+      canvas.before:
+        Color:
+          rgba: 0.086, 0.258, 0.357, 1
+        Rectangle:
+          pos: self.pos
+          size: self.size
+            
+      GridLayout:
+        size_hint: 1, 1
+        pos_hint: {'x': 0, 'y': 0}
+        cols: 2
+
+        Label:
+          text: 'Date'
+                        
+        TextInput:
+          id: date
+          multiline: False
+                                
+    GridLayout:
+      cols: 1
+      size_hint: 0.4, 0.1
+      pos_hint: {'x': 0.3, 'y': 0.3}
+
+      Button:
+        background_normal: " "
+        background_color: 0.086, 0.258, 0.357, 1
+        text: 'Search'
+        bold: True
+        on_release:
+          root.get_entry()
+          root.popup()
+
+
+     
+
